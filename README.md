@@ -1,3 +1,18 @@
+
+---
+title: LanggraphAgenticAI
+emoji: 🐨
+colorFrom: blue
+colorTo: red
+sdk: streamlit
+sdk_version: 1.42.0
+app_file: app.py
+pinned: false
+license: apache-2.0
+short_description: Refined langgraphAgenticAIChatbot
+---
+
+
 # 🎯 Lead Generation AI Agent
 
 This application is a **Streamlit-based AI-powered tool** that helps you generate leads by searching for relevant posts and extracting user information from **Quora** and the **web**. The extracted data is formatted and written into a **Google Sheet** for easy access and further analysis.
