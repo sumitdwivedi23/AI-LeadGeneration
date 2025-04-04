@@ -1,32 +1,23 @@
-name: Deploy to Hugging Face Spaces
-
+name: Sync to Hugging Face Space
 on:
   push:
-    branches:
-      - main  # Deploy when changes are pushed to the main branch
+    branches: [main]
+
+  # to run this workflow manually from the Actions tab 
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  sync-to-hub:
     runs-on: ubuntu-latest
-
     steps:
-    # Step 1: Checkout the repository
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: false
 
-    # Step 2: Install Git LFS (required for Hugging Face Spaces)
-    - name: Install Git LFS
-      run: |
-        sudo apt-get update
-        sudo apt-get install git-lfs
-        git lfs install
-
-    # Step 3: Push to Hugging Face Space
-    - name: Deploy to Hugging Face
-      env:
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      run: |
-        git config --global user.email "actions@github.com"
-        git config --global user.name "GitHub Actions"
-        git remote add hf https://huggingface.co/spaces/sdd-2396/LeadGenerationAgent
-        git push hf main --force
+      - name: Push to hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: git push --force https://sdd-2396:$HF_TOKEN@huggingface.co/spaces/sdd-2396/LeadGenerationAgent main
+       
+         
