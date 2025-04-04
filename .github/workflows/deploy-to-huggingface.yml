@@ -18,6 +18,6 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://sdd-2396:$HF_TOKEN@huggingface.co/spaces/sdd-2396/LeadGenerationAgent main
+        run: git push --force https://sdd-2396:$LEADGENERATION@huggingface.co/spaces/sdd-2396/LeadGenerationAgent main
        
          
